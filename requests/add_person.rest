@@ -2,6 +2,6 @@ POST https://fso22-part3.onrender.com/api/persons
 content-type: application/json
 
 {
-    "name": "testi testaaja",
-    "number": "0402312312"
+    "name": "Sirpa Juutien",
+    "number": "040-2312312"
 }
