@@ -13,14 +13,26 @@ mongoose.connect(url)
     console.log('error connecting to MongoDB:', error.message)
   })
 
-  const personSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      minlength: 3,
-      required: true
-    },
-    number: String
-  })
+const personSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    minlength: 3,
+    required: true
+  },
+  number: {
+    type: String,
+    minlength: 8,
+    required: true,
+    validate: {
+      validator: numberValidator,
+      message: `Puhelinnumero ei ole oikeassa muodossa!`
+    }
+  }
+})
+
+function numberValidator(value) {
+  return (value.match(/^\d{2}-\d{6,13}$/) || value.match(/^\d{3}-\d{5,12}$/))
+}
 
 personSchema.set('toJSON', {
   transform: (document, returnedObject) => {
