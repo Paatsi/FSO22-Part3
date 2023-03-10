@@ -6,7 +6,7 @@ if (process.argv.length<3) {
 }
 
 const url =
-  `mongodb+srv://fullstack:<password>@cluster0.2lllpqi.mongodb.net/phonebook?retryWrites=true&w=majority`
+  'mongodb+srv://fullstack:<password>@cluster0.2lllpqi.mongodb.net/phonebook?retryWrites=true&w=majority'
 
 mongoose.set('strictQuery', false)
 mongoose.connect(url)
@@ -25,11 +25,11 @@ if (process.argv[3] && process.argv[4]) {
   })
 
   person.save().then(result => {
-  console.log(`added ${person.name} number ${person.number} to phonebook`)
-  mongoose.connection.close()
-})
+    console.log(`added ${person.name} number ${person.number} to phonebook`)
+    mongoose.connection.close()
+  })
 } else {
-  console.log("phonebook:")
+  console.log('phonebook:')
   Person.find({}).then(result => {
     result.forEach(person => {
       console.log(`${person.name} ${person.number}`)

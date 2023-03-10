@@ -25,7 +25,7 @@ const personSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: numberValidator,
-      message: `Puhelinnumero ei ole oikeassa muodossa!`
+      message: 'Puhelinnumero ei ole oikeassa muodossa!'
     }
   }
 })

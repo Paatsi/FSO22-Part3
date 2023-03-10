@@ -64,17 +64,17 @@ app.post('/api/persons', (request, response, next) => {
       error: 'Name or number is missing'
     })
   }
-    const person = new Person({
-      name: body.name,
-      number: body.number
-    })
-    person.save().then(savedPerson => {
-      response.json(savedPerson)
-    })
+  const person = new Person({
+    name: body.name,
+    number: body.number
+  })
+  person.save().then(savedPerson => {
+    response.json(savedPerson)
+  })
     .catch(error => next(error))
 })
 
-app.put('/api/persons/:id', (request, response) => {
+app.put('/api/persons/:id', (request, response, next) => {
   const body = request.body
 
   const person = {
@@ -90,7 +90,7 @@ app.put('/api/persons/:id', (request, response) => {
 })
 
 app.use(errorHandler)
-        
+
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
